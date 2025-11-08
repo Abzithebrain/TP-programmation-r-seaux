@@ -32,11 +32,9 @@ int main(int argc, char* argv[]){
         stop("bind()");
     }
 
-    
-
-
-    
-
+    if(listen(sockfd,5)==-1){
+        stop("listen()");
+    }
     
     
     
