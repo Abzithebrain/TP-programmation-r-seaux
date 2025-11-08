@@ -7,8 +7,7 @@
 #include <unistd.h>
 
 
-
-#define CLIENT "127.0.0.1"
+#define SERVER "127.0.0.1"
 #define PORT 1234
 #define BUFLEN 512
 
@@ -29,6 +28,11 @@ int main(int argc, char* argv[]){
     }
     //printf("socket créé\n");
 
+    struct sockaddr_in sockaddr;
+    memset(&sockaddr,0,sizeof(sockaddr));
+    sockaddr.sin_family = AF_INET;
+    sockaddr.sin_port = htons(PORT);
+    sockaddr.sin_addr.s_addr = inet_addr(SERVER);
     
 
 
