@@ -28,6 +28,10 @@ int main(int argc, char* argv[]){
     servaddr.sin_port = htons(PORT);
     servaddr.sin_addr.s_addr = inet_addr(SERVER);
 
+    if(bind(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr))==-1){
+        stop("bind()");
+    }
+
     
 
 
