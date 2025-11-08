@@ -7,6 +7,7 @@
 
 #define SERVER "127.0.0.1"
 #define PORT 1234
+#define BUFLEN 512
 
 void stop(char*){
     perror("msg");
@@ -45,6 +46,28 @@ int main(int argc, char* argv[]){
         stop("accept()");
     }
     
+    char message[BUFLEN+1];
+    for (int i = 0; i < 1000; i++)
+    {
+        memset(&message,0,BUFLEN+1);
+        int n = recv(newsockfd,message,BUFLEN,0); 
+        if (n < 0)
+        {
+            stop("recv()");
+        }
+
+        printf("(%d octets)reçu: %s\n",n,message);
+        if (send(newsockfd,message,n,0)==-1)
+        {
+            stop("send()");
+        
+        }
+        
+        
+    }
+    
+
+
     
     
     
