@@ -36,6 +36,18 @@ int main(int argc, char* argv[]){
         stop("listen()");
     }
     
+    int newsockfd,clilen;
+    struct sockaddr_in cliaddr;
+    memset(&cliaddr,0,sizeof(cliaddr));
+    clilen = sizeof(cliaddr);
+    if (newsockfd = accept(sockfd,(struct sockaddr*)&cliaddr,(socklen_t *)&clilen) < 0)
+    {
+        stop("accept()");
+    }
     
+    
+    
+    
+
     
 }
