@@ -62,7 +62,11 @@ int main(int argc, char* argv[]){
         if (n < 0)
         {
             stop("recv()");
+        }else if (n==0)
+        {
+            break;
         }
+        
         
 
         printf("(%d octets)reçu: %s\n",n,message);
