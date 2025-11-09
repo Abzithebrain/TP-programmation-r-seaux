@@ -33,6 +33,30 @@ int main(int argc, char* argv[]){
     sockaddr.sin_family = AF_INET;
     sockaddr.sin_port = htons(PORT);
     sockaddr.sin_addr.s_addr = inet_addr(SERVER);
+
+
+    if (connect(sockfd,(struct sockaddr*)&sockaddr,sizeof(sockaddr)))
+    {
+        stop("connect()");
+    }
+    //printf("connection etablie")
+
+    //char message[BUFLEN+1];
+    //memset(&message,0,BUFLEN+1);
+    const char *message = "ECHO";
+    for (int i = 0; i < 1000; i++){
+        if (send(sockfd,message,strlen(message),0)==-1)
+        {
+            stop("send()");
+        }
+        //printf("envoyé\n");
+
+
+    }
+        
+        
+
+    
     
 
 
