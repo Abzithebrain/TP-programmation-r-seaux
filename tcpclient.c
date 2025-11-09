@@ -41,15 +41,28 @@ int main(int argc, char* argv[]){
     }
     //printf("connection etablie")
 
-    //char message[BUFLEN+1];
-    //memset(&message,0,BUFLEN+1);
+    char msg[BUFLEN+1];
+
     const char *message = "ECHO";
     for (int i = 0; i < 1000; i++){
-        if (send(sockfd,message,strlen(message),0)==-1)
+        int n = send(sockfd,message,strlen(message),0);
+        if (n==-1)
         {
             stop("send()");
         }
-        //printf("envoyé\n");
+       // printf("(%d octets)envoyé\n",n);
+
+        memset(&msg,0,BUFLEN+1);
+        int n1 = recv(sockfd,msg,BUFLEN,0);
+        if (n1==-1)
+        {
+            stop("recv()");
+        }
+        printf("(%d octets)reçu: %s\n",n1,msg);
+        
+
+
+        
 
 
     }
